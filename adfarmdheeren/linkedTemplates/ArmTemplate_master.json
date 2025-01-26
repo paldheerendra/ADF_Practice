@@ -1,0 +1,125 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "adfarmdheeren"
+		},
+		"DheerendraADLS_LS_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'DheerendraADLS_LS'"
+		},
+		"DheerendraAzureSqlDBLS_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'DheerendraAzureSqlDBLS'"
+		},
+		"SFTP_LS_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'SFTP_LS'"
+		},
+		"DheerendraADLS_LS_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://ipdheerenadls.dfs.core.windows.net/"
+		},
+		"DheerendraAzureSqlDBLS_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "dheerendbserver.database.windows.net"
+		},
+		"DheerendraAzureSqlDBLS_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "dheerendb"
+		},
+		"DheerendraAzureSqlDBLS_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "dheerendra"
+		},
+		"SFTP_LS_properties_typeProperties_host": {
+			"type": "string",
+			"defaultValue": "test.rebex.net"
+		},
+		"SFTP_LS_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "demo"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "adfarmdheeren_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"DheerendraADLS_LS_accountKey": {
+						"value": "[parameters('DheerendraADLS_LS_accountKey')]"
+					},
+					"DheerendraAzureSqlDBLS_password": {
+						"value": "[parameters('DheerendraAzureSqlDBLS_password')]"
+					},
+					"SFTP_LS_password": {
+						"value": "[parameters('SFTP_LS_password')]"
+					},
+					"DheerendraADLS_LS_properties_typeProperties_url": {
+						"value": "[parameters('DheerendraADLS_LS_properties_typeProperties_url')]"
+					},
+					"DheerendraAzureSqlDBLS_properties_typeProperties_server": {
+						"value": "[parameters('DheerendraAzureSqlDBLS_properties_typeProperties_server')]"
+					},
+					"DheerendraAzureSqlDBLS_properties_typeProperties_database": {
+						"value": "[parameters('DheerendraAzureSqlDBLS_properties_typeProperties_database')]"
+					},
+					"DheerendraAzureSqlDBLS_properties_typeProperties_userName": {
+						"value": "[parameters('DheerendraAzureSqlDBLS_properties_typeProperties_userName')]"
+					},
+					"SFTP_LS_properties_typeProperties_host": {
+						"value": "[parameters('SFTP_LS_properties_typeProperties_host')]"
+					},
+					"SFTP_LS_properties_typeProperties_userName": {
+						"value": "[parameters('SFTP_LS_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "adfarmdheeren_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'adfarmdheeren_ArmTemplate_0')]"
+			]
+		}
+	]
+}

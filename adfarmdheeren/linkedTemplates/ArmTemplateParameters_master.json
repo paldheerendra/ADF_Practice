@@ -1,0 +1,42 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adfarmdheeren"
+		},
+		"DheerendraADLS_LS_accountKey": {
+			"value": ""
+		},
+		"DheerendraAzureSqlDBLS_password": {
+			"value": ""
+		},
+		"SFTP_LS_password": {
+			"value": ""
+		},
+		"DheerendraADLS_LS_properties_typeProperties_url": {
+			"value": "https://ipdheerenadls.dfs.core.windows.net/"
+		},
+		"DheerendraAzureSqlDBLS_properties_typeProperties_server": {
+			"value": "dheerendbserver.database.windows.net"
+		},
+		"DheerendraAzureSqlDBLS_properties_typeProperties_database": {
+			"value": "dheerendb"
+		},
+		"DheerendraAzureSqlDBLS_properties_typeProperties_userName": {
+			"value": "dheerendra"
+		},
+		"SFTP_LS_properties_typeProperties_host": {
+			"value": "test.rebex.net"
+		},
+		"SFTP_LS_properties_typeProperties_userName": {
+			"value": "demo"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
