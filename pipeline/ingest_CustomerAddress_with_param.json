@@ -1,0 +1,70 @@
+{
+	"name": "ingest_CustomerAddress_with_param",
+	"properties": {
+		"activities": [
+			{
+				"name": "sql table data to adls",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "sql_generic_ds",
+						"type": "DatasetReference",
+						"parameters": {
+							"schemaName": "SalesLT",
+							"tableName": "CustomerAddress"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "adls_generic_ds",
+						"type": "DatasetReference",
+						"parameters": {
+							"folderName": "CustomerAddress",
+							"fileName": "CustomerAddress.csv"
+						}
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2025-01-26T16:44:33Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

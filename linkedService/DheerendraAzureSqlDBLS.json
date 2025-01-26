@@ -1,0 +1,18 @@
+{
+	"name": "DheerendraAzureSqlDBLS",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"description": "linked service db",
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"server": "dheerendbserver.database.windows.net",
+			"database": "dheerendb",
+			"encrypt": "mandatory",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "dheerendra",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQEJENDg3QUYxLTM3RDAtNDc2Mi1BNjZFLTRENTdCQTM4QzZFRl83OWY1YTYzOC1iNjM0LTQ0ZDctODY3ZS05ZWMwMTUzOTIxZDIiDQp9"
+		}
+	}
+}

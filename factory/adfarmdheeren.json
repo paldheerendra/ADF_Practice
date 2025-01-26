@@ -1,0 +1,9 @@
+{
+	"name": "adfarmdheeren",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "ab2ac9fd-3eab-461a-b067-3a7c3e02e310",
+		"tenantId": "24c4573c-67c3-458d-ae50-963da02f99e9"
+	}
+}
